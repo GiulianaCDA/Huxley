@@ -1,0 +1,67 @@
+#include <stdio.h>
+
+void ler_linha(int m, int matriz[][m], int i, int j){
+	if(j == m){
+		return;
+	}
+	else{
+		scanf("%d", &matriz[i][j]);
+		j++;
+		ler_linha(m, matriz, i, j);
+	}
+}
+void ler_matriz(int n, int m, int matriz[][m], int i){
+	if(i == n){
+		return;
+	}
+	else{
+		ler_linha(m, matriz, i, 0);
+		i++;
+		ler_matriz(n, m, matriz, i);
+	}
+}
+
+void heterofagia_par(int n, int m, int matriz[][m], int lisossomos, int i, int j){
+	if(i == n){
+		printf("s%ds", lisossomos);
+		return;
+	}
+	else{
+		if(j == m){
+			j = 0;
+			i++;
+			heterofagia_par(n, m, matriz, lisossomos, i, j);
+		}
+		else{
+			if(matriz[i][j] == 1){
+				matriz[i][j] = 0;
+				lisossomos--;
+				if(lisossomos == 0){
+				    printf("s%ds", lisossomos);
+					return;
+				}
+			}
+			j++;
+			heterofagia_par(n, m, matriz, lisossomos, i, j);
+		}
+	}
+}
+int main(){
+	int n, m;
+	scanf("%d%d", &n, &m);
+	int matriz[n][m];
+	ler_matriz(n, m, matriz, 0);
+	int lisossomos;
+	scanf("%d", &lisossomos);
+	if(lisossomos == 0){
+		printf("teste");
+		//finaliza(n, m, matriz, 0);
+	}
+	else if(lisossomos % 2 == 0){
+		heterofagia_par(n, m, matriz, lisossomos, 0, 0);
+	}
+	/*else{
+		heterofagia_impar(n, m, matriz, lisossomos, 0);
+	}*/
+	return 0;
+}
