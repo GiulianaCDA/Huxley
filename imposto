@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main(){
+	double dolar, aliquota, produto, frete, 
+	valor_total, total_imposto, valor_final, icms;
+
+	scanf("%lf%lf%lf%lf", &dolar, &aliquota, &produto, &frete);
+	frete *= dolar;
+	produto *= dolar;
+	aliquota = aliquota / 100;
+
+	valor_total = frete + produto;
+
+	printf("%.2lf\n%.2lf\n", dolar, produto);//COTAÇÃO, VALOR DO PRODUTO
+	printf("%.2lf\n%.2lf\n", frete, valor_total);//VALOR DO FRETE E VALOR TOTAL
+
+	if(produto / dolar >= 2500){
+
+		printf("%.2lf\n", produto * 0.6);//IMPOSTO DE IMPORT
+		icms = ((produto + (produto * 0.6)) / (1 - aliquota)) * aliquota;
+		printf("%.2lf\n", icms); //ICMS
+		total_imposto = (produto * 0.6) + icms;
+		printf("%.2lf\n", total_imposto);//total de imposto
+		valor_final = total_imposto + valor_total;
+		printf("%.2lf\n", valor_final);
+		printf("Impostos calculados sem o frete");
+	}
+	else{
+
+		printf("%.2lf\n", valor_total * 0.6);//IMPOSTO DE IMPORT
+		icms = ((valor_total + (valor_total * 0.6)) / (1 - aliquota)) * aliquota;
+		printf("%.2lf\n", icms);//ICMS
+		total_imposto = (valor_total * 0.6) + icms;
+		printf("%.2lf\n", total_imposto);// total de imposto
+		valor_final = total_imposto + valor_total;
+		printf("%.2lf\n", valor_final);
+		printf("Impostos calculados com o frete");
+	}
+	return 0;
+}
