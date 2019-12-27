@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    char nome[50], sobrenome[50];
+    scanf("%s", nome);
+    scanf("%s", sobrenome);
+    printf("%s %s", nome, sobrenome);
+	return 0;
+}
