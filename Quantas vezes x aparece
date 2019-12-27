@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+void ler_array(int array[], int i){
+	if(i == 10){
+		return;
+	}
+	else{
+		scanf("%d", &array[i]);
+		i++;
+		ler_array(array, i);
+	}
+}
+void search(int array[], int number, int i, int cont){
+	if(i == 10){
+		printf("%d", cont);
+		return;
+	}
+	else{
+		if(array[i] == number){
+			cont++;
+		}
+		i++;
+		search(array, number, i, cont);
+	}
+}
+int main(){
+	int array[10], number;
+	ler_array(array, 0);
+	scanf("%d", &number);
+	search(array, number, 0, 0);
+	return 0;
+}
