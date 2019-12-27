@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+void intercala(int array1[], int array2[], int linhas, int i){
+    if(i >= linhas){
+        return;
+    }
+    else{
+        printf("%d\n%d\n", array1[i], array2[i]);
+        i++;
+        return intercala(array1, array2, linhas, i);
+    }
+}
+void loop(int array[], int tamanho, int i){
+    if(i == tamanho){
+        return;
+    }
+    else{
+        scanf("%d", &array[i]);
+    }
+    i++;
+    return loop(array, tamanho, i);
+}
+int main() {
+    int tamanho;
+    scanf("%d", &tamanho);
+    int array1[tamanho], array2[tamanho];
+    loop(array1, tamanho, 0);
+    loop(array2, tamanho, 0);
+    intercala(array1, array2, tamanho, 0);
+	return 0;
+}
