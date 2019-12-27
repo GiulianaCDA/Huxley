@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void loop(char palavra[], int tamanho){
+	if(tamanho < 0){
+		return;
+	}
+	else{
+		if(tamanho != 0){
+			printf("%c", palavra[tamanho]);
+		}
+		else{
+			printf("%c\n", palavra[tamanho]);
+		}
+		tamanho--;
+		loop(palavra, tamanho);
+	}
+}
+int main(){
+	char palavra[255];
+	scanf("%s", palavra);
+	int quantidade = strlen(palavra);
+	loop(palavra, quantidade);
+	return 0;
+}
